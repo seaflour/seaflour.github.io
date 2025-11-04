@@ -1,0 +1,23 @@
+{% macro byline(author, date, changed_date, coauthor, tags) %}
+<div class="byline">
+	<time datetime="{{ date | formatDateHtml }}">{{ date | formatDateDisplay }}</time>
+	{% if changed_date %}
+		<small class="updated">(updated <time datetime="{{changed_date | formatDateHtml }}">{{ changed_date | formatDateDisplay }}</time>)</small>
+	{% endif %}
+	<span class="middot"/>
+	<span>by <span class="author" id="author">{{ author }}</span>
+		{% if coauthor %}
+			and <a class="author" id="author" href="{{ coauthor.link }}">{{ coauthor.name }}</a>
+		{% endif %}
+	</span>
+	{% if tags %}
+		<span class="middot"/>
+		<span>
+			{% for tag in tags %}
+				<span class="tag"><a href="/posts/tagged/{{ tag | slugify }}/">{{ tag }}</a></span>
+				{% if not loop.last %}, {% endif %}
+			{% endfor %}
+		</span>
+	{% endif %}
+</div>
+{% endmacro %}

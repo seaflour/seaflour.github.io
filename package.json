@@ -2,12 +2,15 @@
   "name": "www.seaflour.net",
   "version": "0.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "build": "rm -rf www && ELEVENTY_ENV=prod eleventy",
     "serve": "rm -rf www && ELEVENTY_ENV=dev eleventy --serve",
     "update": "git pull && npm i && npm run build"
   },
   "dependencies": {
-    "@11ty/eleventy": "^3.1.2"
+    "@11ty/eleventy": "^3.1.2",
+    "eleventy-plugin-footnotes": "^0.11.0",
+    "luxon": "^3.7.2"
   }
 }

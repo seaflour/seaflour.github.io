@@ -1,0 +1,18 @@
+---
+title: lucy's blog world
+subhead: blog
+pagination:
+    data: collections.posts
+    addAllPagesToCollections: true
+    size: 10
+permalink: /posts/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber }}/{% endif %}index.html
+---
+{% extends "layouts/default.njk" %}
+{% block main %}
+	{% include "components/pagination.njk" %}
+
+	{% set postList = pagination.items %}
+	{% include "components/post_list.njk" %}
+
+	{% include "components/pagination.njk" %}
+{% endblock %}

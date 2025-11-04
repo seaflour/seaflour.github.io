@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="conversion.js" defer></script>
+		<!-- <script src="convert.js" defer></script> -->
 		<title>{{ title if title else site.title }}</title>
 	</head>
 	<body>
@@ -13,5 +13,6 @@
 		<div id="content">
 			{% block main %}{% endblock %}
 		</div>
+		{% include "components/footer.njk" %}
 	</body>
 </html>

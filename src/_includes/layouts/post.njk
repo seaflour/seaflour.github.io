@@ -1,0 +1,36 @@
+---
+subhead: blog
+---
+{% from "components/byline.njk" import byline %}
+{% extends "layouts/default.njk" %}
+{% block main %}
+	<article>
+		<header class="article_header">
+			{% if feature_image %}
+				<figure id="feature">
+					<div>
+						<img src="{{ feature_image }}" alt="{{ feature_alt if feature_alt else "feature image for '" + title +"'" }}"/>
+					</div>
+					{% if feature_caption %}
+						<figcaption>{{ feature_caption | md_inline | safe }}</figcaption>
+					{% endif %}
+				</figure>
+			{% endif %}
+			{{ byline(site.name, date, date_changed, coauthor, tags) }}
+			<h1>{{ title }}</h1>
+			<strong id="lead">{{ description }}</strong>
+		</header>
+		{% if content_warnings %}
+			<div class="warnings">
+				<p>
+					<strong>content warnings:</strong><br>
+					{% for cw in content_warnings %}
+						<span class="cw">{{ cw }}</span>{% if not loop.last %}, {% endif %}
+					{% endfor %}
+				</p>
+			</div>
+		{% endif %}
+		{{ content | safe }}
+		{% footnotes %}
+	</article>
+{% endblock %}

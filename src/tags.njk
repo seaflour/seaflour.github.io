@@ -1,0 +1,18 @@
+---
+title: lucy's blog world
+subhead: blog
+permalink: /posts/tagged/index.html
+---
+{% extends "layouts/default.njk" %}
+{% block main %}
+	<header class="page-header">
+		<h1>all tags</h1>
+	</header>
+
+	<ul>
+		{% for tag in collections | getKeys | filterTagList | sortAlphabetically %}
+			{% set tagUrl %}/posts/tagged/{{ tag | slugify }}/{% endset %}
+			<li><a href="{{ tagUrl }}" class="tag">{{ tag }}</a></li>
+		{% endfor %}
+	</ul>
+{% endblock %}

@@ -1,0 +1,10 @@
+<footer>
+	<div>
+		{% for item in footer %}
+			<span><a href="{{ item.link }}" rel="me" target="_blank">{{ item.name }}</a></span>
+			{% if not loop.last %}
+				<span>|</span>
+			{% endif %}
+		{% endfor %}
+	</div>
+</footer>
